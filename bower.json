@@ -1,0 +1,7 @@
+{
+  "name": "google-analytics#gh-pages",
+  "private": true,
+  "dependencies": {
+    "google-analytics": "GoogleWebComponents/google-analytics#master"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "google-analytics",
+  "description": "Encapsulates Google Analytics dashboard features into web components",
+  "homepage": "http://googlewebcomponents.github.io/google-analytics",
+  "authors": [
+    "Philip Walton <philip@philipwalton.com>"
+  ],
+  "main": "google-analytics.html",
+  "license": "Apache2",
+  "keywords": [
+    "google",
+    "analytics",
+    "dashboard",
+    "polymer",
+    "web-component",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "../"
+  ],
+  "dependencies": {
+    "es6-promise": "^2.0.0",
+    "google-chart": "GoogleWebComponents/google-chart#^0.2.0",
+    "google-signin": "GoogleWebComponents/google-signin#^0.1.0",
+    "polymer": "Polymer/polymer#^0.5.1"
+  },
+  "_release": "6b030fe70b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "6b030fe70b96e99a38eeb4adc370d451b22a095d"
+  },
+  "_source": "git://github.com/GoogleWebComponents/google-analytics.git",
+  "_target": "master",
+  "_originalSource": "GoogleWebComponents/google-analytics",
+  "_direct": true
+}
