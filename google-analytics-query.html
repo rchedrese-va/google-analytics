@@ -209,6 +209,27 @@ Element for querying the Google Analytics Core Reporting API.
          * @type string
          */
 
+        /**
+         * backoffCounter is the current number of retries attempted for a request using exponential backoff.
+         * 
+         * @type integer
+         */
+        backoffCounter: 0,
+
+        /**
+         * backoffLimit is the maximum number of retries that will be attempted using exponential backoff.
+         * 
+         * @type integer
+         */
+        backoffLimit: 5,
+        
+        /**
+         * retriableErrors is the list of error types that should be retried using exponential backoff.
+         * 
+         * @type Array
+         */
+        retriableErrors: ['userRateLimitExceeded', 'quotaExceeded'],
+
         observe: {
           ids: 'getData',
           startDate: 'getData',
@@ -279,6 +300,14 @@ Element for querying the Google Analytics Core Reporting API.
          */
         handleResponse: function(response) {
           if (response.error) {
+            var errorType = response.error.data[0].reason;
+            var errorCode = response.error.code;
+
+            if (errorCode == 403 && this.retriableErrors.indexOf(errorType) != -1 && this.backoffCounter < this.backoffLimit) {
+                window.setTimeout(this.getData.bind(this), (this.backoffCounter + Math.random() * 1000));
+                this.backoffCounter++;
+                return;
+            };
             this.fire('analytics-query-error', response.error);
           }
           else {
